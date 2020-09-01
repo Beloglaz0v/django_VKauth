@@ -1,10 +1,44 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
-{% block title %} Home {% endblock %}
+{#{% block title %} Профиль {% endblock %}#}
 {% block content %}
-<div class="row">
-    <div class="col-sm-12 mb-3">
-       <h4 class="text-center"> Welcome {{ user.username }} </h4>
+    <div class="row">
+        <div class="col-sm-12 mb-3">
+            <h2 class="text-center">Профиль</h2>
+        </div>
+        <!-- Add from here -->
+        <div class="col-md-6 text-center">
+            <img src="{{ user.photo_100 }}" alt="" width="150" height="150" style="border-radius: 50%">
+        </div>
+        <div class="col-md-6 social-container my-2">
+            <p> Имя: {{ request.user.first_name }}</p>
+            <p> Фамилия: {{ request.user.last_name }}</p>
+            <p> E-mail: {{ request.user.email }}</p>
+            <p> Ссылка: <a href="https://vk.com/{{ request.user.username }}">vk.com/{{ request.user.username }}</a></p>
+        </div>
+        <div class="col-sm-12 mt-2 text-center">
+            <button class="btn btn-danger">
+                <a href="{% url 'logout' %}">Выйти</a>
+            </button>
+        </div>
     </div>
-</div>
+    <!-- End here -->
+    <div class="row">
+        <div class="col-sm-12 mb-3">
+            <h3 class="text-center">Список друзей: </h3>
+        </div>
+        {% for friend in friend_list %}
+            <div class='container'>
+                <div class='row'>
+                    <div class="col-md-6 text-center">
+                        <img src="{{ friend.photo_100 }}" alt="" width="110" height="110" style="border-radius: 50%">
+                    </div>
+                    <div class="col-md-6 social-container my-2">
+                        <p> Имя: {{ friend.first_name }} {{ friend.last_name }}</p>
+                        <p> Ссылка: <a href="https://vk.com/id{{ friend.id }}">vk.com/id{{ friend.id }}</a></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

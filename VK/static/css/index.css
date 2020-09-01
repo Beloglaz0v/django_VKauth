@@ -1,17 +1,21 @@
-img {
-  border: 3px solid #282c34;
-}
+/*img {*/
+/*  border: 3px solid #282c34;*/
+/*}*/
+
 .container-fluid {
   height: 100vh;
-  background-color: #282c34;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+padding: 30px 0;
+background-color: #282c34;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 .container-fluid > div {
-  width: 85%;
-  min-width: 300px;
-  max-width: 500px;
+max-height: 100%;
+overflow-y: scroll;
+width: 85%;
+min-width: 300px;
+max-width: 500px;
 }
 .card {
   width: 100%;
@@ -25,3 +29,7 @@ img {
   color: white;
   text-decoration: none ;
 }
+ h3 {
+   margin-top: 30px;
+    /*margin-bottom: 20px; !* Отрицательный отступ между заголовком и текстом *!*/
+   }

@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'VK.apps.VkConfig',
+    'VK',
 
     'social_django',
 ]
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'VKauth.urls'
@@ -66,6 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -74,9 +77,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'VKauth.wsgi.application'
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.linkedin.LinkedinOAuth2',
-    'social_core.backends.instagram.InstagramOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.vk.VKOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
@@ -129,10 +129,13 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = '7583866'
-SOCIAL_AUTH_VK_OAUTH2_SECRET = 'OWwhs5Rpc2G7xdPXIsgJ'
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7584100'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'CIscUa9PNN8szkoFBk9o'
 SOCIAL_AUTH_VK_APP_USER_MODE = 1
-
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email', 'friends', 'photos']
+SOCIAL_AUTH_VK_PROFILE_EXTRA_PARAMS = {
+  'fields': 'id, name, email, avatar, link'
+}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
