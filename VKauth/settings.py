@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'oupq7_#duhuao65g8ws#z1n#$eq02j!x=70yc#7@7p914u@mcb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -133,12 +133,16 @@ SOCIAL_AUTH_VK_OAUTH2_KEY = '7584100'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'CIscUa9PNN8szkoFBk9o'
 SOCIAL_AUTH_VK_APP_USER_MODE = 1
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email', 'friends', 'photos']
-SOCIAL_AUTH_VK_PROFILE_EXTRA_PARAMS = {
-  'fields': 'id, name, email, avatar, link'
-}
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#
+# STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, 'static'),
+]
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
